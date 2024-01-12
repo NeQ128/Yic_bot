@@ -51,7 +51,7 @@ def handle_message(event):
                 player_list[player_id]['game_type'] = '1A2B'
                 player_list[player_id]['game_mode'] = int(mode)
                 player_list[player_id]['game_answer'] = game_1A2B.Answer_Make(player_list[player_id]['game_mode'])
-                message = '1A2B遊戲已開始'
+                message = f'1A2B({mode})遊戲已開始'
 
     elif player_id in player_list.keys():
         game_type = player_list[player_id]['game_type']
