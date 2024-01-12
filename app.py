@@ -33,6 +33,7 @@ def callback():
 @hander.add(MessageEvent,message=TextMessage)
 def handle_message(event):
     message = '輸入錯誤，請重新輸入'
+    game_end = False
 
     profile = line_bot_api.get_profile(event.source.user_id)
     player_id = profile.user_id
@@ -62,7 +63,7 @@ def handle_message(event):
                 if game_end:
                     player_list.pop(player_id)
 
-    if player_id not in player_list.keys():
+    if player_id not in player_list.keys() and not game_end:
         message = TemplateSendMessage(alt_text='ConfirmTemplate',
             template=ConfirmTemplate(
                 text='請選擇要開始的遊戲↓',
